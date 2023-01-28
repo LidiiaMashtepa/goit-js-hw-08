@@ -503,10 +503,12 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"eH52W":[function(require,module,exports) {
-const throttle = require("lodash.throttle");
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _lodashThrottle = require("lodash.throttle");
+var _lodashThrottleDefault = parcelHelpers.interopDefault(_lodashThrottle);
 const form = document.querySelector(".feedback-form");
 console.log(form);
-form.addEventListener("input", throttle(getInputValues, 500));
+form.addEventListener("input", (0, _lodashThrottleDefault.default)(getInputValues, 500));
 form.addEventListener("submit", localStorageSubmit);
 let inputValues = {};
 function getLocalStorage() {
@@ -536,7 +538,7 @@ function localStorageSubmit(evt) {
     form.elements.message.value = "";
 }
 
-},{"lodash.throttle":"bGJVT"}],"bGJVT":[function(require,module,exports) {
+},{"lodash.throttle":"bGJVT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bGJVT":[function(require,module,exports) {
 var global = arguments[3];
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -876,6 +878,36 @@ var global = arguments[3];
     return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
 }
 module.exports = throttle;
+
+},{}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["7Ih8d","eH52W"], "eH52W", "parcelRequired7c6")
 

@@ -506,15 +506,17 @@ function hmrAcceptRun(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _player = require("@vimeo/player");
 var _playerDefault = parcelHelpers.interopDefault(_player);
-const throttle = require("lodash.throttle");
+var _lodashThrottle = require("lodash.throttle");
+var _lodashThrottleDefault = parcelHelpers.interopDefault(_lodashThrottle);
 const iframe = document.querySelector("iframe");
 const player = new (0, _playerDefault.default)(iframe);
-player.on("timeupdate", throttle(function(data) {
+player.on("timeupdate", (0, _lodashThrottleDefault.default)(function(data) {
     const time1 = data.seconds;
     console.log(time1);
     localStorage.setItem("videoplayer-current-time", time1);
 }, 1000));
 const time = localStorage.getItem("videoplayer-current-time");
+if (localStorage.length === 0) return;
 player.setCurrentTime(time);
 
 },{"@vimeo/player":"kmmUG","lodash.throttle":"bGJVT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kmmUG":[function(require,module,exports) {
